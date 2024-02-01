@@ -1,17 +1,15 @@
 
-
-
 // src/App.js
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes as Switch } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import About from './components/About';
+import Home from './components/Home';
 import Navbar from './components/NavBar';
-import UserForm from './components/UserForm';
-import UserDataPage from './components/UserDataPage';
+import Contact from './components/Contact';
+
+
 import './style.css'; 
 
-const Home = () => <h2>Home Page</h2>;
-const About = () => <h2>About Page</h2>;
 
 const App = () => {
   const [userData, setUserData] = useState(null);
@@ -24,14 +22,11 @@ const App = () => {
   return (
     <Router>
       <Navbar />
-      <Switch>
-        {/*<Route path="/" exact component={Home} />
-        <Route path="/about" component={About} />*/
-}
-        <Route path = "/" element={<UserForm/>}/>
-        <Route path = "/UserDataPage" element={<UserDataPage/>}/>
-        {/*<Route path="/UserDataPage" exact render={() => <UserDataPage userData={userData} />} />*/}
-      </Switch>
+      <Routes>
+        <Route path="/" exact element={<Home/>} />
+        <Route path="/about" element={<About/>} />
+        <Route path="/contact" element={<Contact/>} />
+      </Routes>
       
     </Router>
   );
